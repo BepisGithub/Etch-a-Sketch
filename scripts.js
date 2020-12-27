@@ -20,4 +20,5 @@ for(i=0;i<256;i++){
     // end temp
     gridArray[i].style.height = "50px";
     gridArray[i].style.width = "50px";
+    gridArray[i].addEventListener("click", () => gridArray[i].); //new
 }

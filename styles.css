@@ -4,3 +4,7 @@
     height: 800px;
     width: 800px;
 }
+
+.hoveredEffect{
+    background-color: black;
+}
