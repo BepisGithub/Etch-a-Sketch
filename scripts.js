@@ -21,4 +21,7 @@ for(i=0;i<256;i++){
     gridArray[i].style.height = "50px";
     gridArray[i].style.width = "50px";
     gridArray[i].addEventListener("click", () => gridArray[i].); //new
+    //i think i need to create a spare var to do thje following:
+    // gridArray[i] = tempVar;
+    // tempVar.addEventListener("click, () => tempVar.addClass")
 }
