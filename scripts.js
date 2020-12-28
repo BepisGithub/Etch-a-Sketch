@@ -2,21 +2,40 @@ const body = document.querySelector("body");
 const resetButton = document.createElement("button");
 resetButton.textContent = "RESET GRID";
 body.appendChild(resetButton);
-const sqPerSide = prompt("How many squares per side do you want the grid?");
+const sqPerSide = prompt("How many squares per side do you want the grid?"); //TO DO: ADD A FLOOR FUNCTION TO ROUND THIS TO AN INT OR WE ARE DOOMED not really but still it would be nice
+// switch (sqPerSide){
+//     case sqPerSide>100:
+//         alert("You have entered a number greater than 100");
+//         sqPerSide = 100;
+//         break;
+//     case sqPerSide<1:
+//         alert("You have entered a number less than 1");
+//         sqPerSide = 1;
+//         break;
+//     default:
+//         break;
+// }
 let gridArray = [];
-const totalGridNumber = 256;
+const totalGridNumber = sqPerSide**2;
 const gridContainer = document.createElement("div");
 gridContainer.id = "gridContainer";
 
 
-
+gridContainer.style.width = `${50*sqPerSide}px`;
+gridContainer.style.height = `${50*sqPerSide}px`;
 // gridContainer.style.width = "800px"; //50px * 16
 // gridContainer.style.height = "800px"; //50px * 16
+
+//alternatively if i wanted to keep the grid size consistent i could do
+//set a grid dimension e.g. 960x960
+//take number of grids per side
+//number/960 = length for each grid
+//boom, consistent grid size
 
 
 //end 
 body.appendChild(gridContainer);
-for(i=0;i<256;i++){
+for(i=0;i<totalGridNumber;i++){
     gridArray[i] = document.createElement("div");
     gridContainer.appendChild(gridArray[i]);
     gridArray[i].style.height = "50px";
