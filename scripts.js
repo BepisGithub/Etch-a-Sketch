@@ -53,6 +53,7 @@ gridContainer.style.height = `${gridDimensionVal}px`;
 // gridContainer.style.width = "800px"; //50px * 16
 // gridContainer.style.height = "800px"; //50px * 16
 gridContainer.style.boxShadow = "0px 0px 18px 0px #590000";
+//hello
 
 //alternatively if i wanted to keep the grid size consistent i could do
 //set a grid dimension e.g. 800x800
