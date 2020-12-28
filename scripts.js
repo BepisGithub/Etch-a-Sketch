@@ -2,6 +2,7 @@ const body = document.querySelector("body");
 const resetButton = document.createElement("button");
 const gridDimensionVal = 800;
 resetButton.textContent = "RESET GRID";
+resetButton.setAttribute("id","resetButton");
 body.appendChild(resetButton);
 let sqPerSide = prompt("How many squares per side do you want the grid?"); //TO DO: ADD A FLOOR FUNCTION TO ROUND THIS TO AN INT OR WE ARE DOOMED not really but still it would be nice
 if(sqPerSide<1){
