@@ -32,7 +32,11 @@ body.appendChild(resetButton);
 colorButtonContainers.appendChild(blackButton);
 colorButtonContainers.appendChild(rainbowButton);
 body.appendChild(colorButtonContainers);
-let sqPerSide = prompt("How many squares per side do you want the grid?"); //TO DO: ADD A FLOOR FUNCTION TO ROUND THIS TO AN INT OR WE ARE DOOMED not really but still it would be nice
+let sqPerSide;
+do{
+sqPerSide = prompt("How many squares per side do you want the grid?"); //TO DO: ADD A FLOOR FUNCTION TO ROUND THIS TO AN INT OR WE ARE DOOMED not really but still it would be nice
+}while(isNaN(sqPerSide))
+
 if(sqPerSide<1){
     alert("You have entered a number less than 1");
     sqPerSide = 1;
