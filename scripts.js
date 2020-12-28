@@ -1,3 +1,6 @@
+//box shadow on container
+//button toggle for colour
+
 const body = document.querySelector("body");
 const resetButton = document.createElement("button");
 const gridDimensionVal = 800;
@@ -25,6 +28,7 @@ gridContainer.style.width = `${gridDimensionVal}px`;
 gridContainer.style.height = `${gridDimensionVal}px`;
 // gridContainer.style.width = "800px"; //50px * 16
 // gridContainer.style.height = "800px"; //50px * 16
+gridContainer.style.boxShadow = "0px 0px 18px -1px #590000";
 
 //alternatively if i wanted to keep the grid size consistent i could do
 //set a grid dimension e.g. 800x800
