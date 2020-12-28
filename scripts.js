@@ -2,6 +2,7 @@ const body = document.querySelector("body");
 const resetButton = document.createElement("button");
 resetButton.textContent = "RESET GRID";
 body.appendChild(resetButton);
+const sqPerSide = prompt("How many squares per side do you want the grid?");
 let gridArray = [];
 const totalGridNumber = 256;
 const gridContainer = document.createElement("div");
