@@ -24,9 +24,9 @@ gridContainer.style.height = `${50*sqPerSide}px`;
 // gridContainer.style.height = "800px"; //50px * 16
 
 //alternatively if i wanted to keep the grid size consistent i could do
-//set a grid dimension e.g. 960x960
+//set a grid dimension e.g. 800x800
 //take number of grids per side
-//number/960 = length for each grid
+//number/800 = length for each grid
 //boom, consistent grid size
 
 
