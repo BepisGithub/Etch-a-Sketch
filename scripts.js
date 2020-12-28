@@ -1,13 +1,37 @@
-//box shadow on container
+
 //button toggle for colour
 
 const body = document.querySelector("body");
 const resetButton = document.createElement("button");
+const blackButton = document.createElement("button");
+const rainbowButton = document.createElement("button");
+const colorButtonContainers = document.createElement("div");
 const gridDimensionVal = 800;
+let blackPressed = false, rainbowPressed = false;
+
+function blackTrue(){
+    blackPressed = true;
+    rainbowPressed = false;
+}
+function rainbowTrue(){
+    blackPressed = false;
+    rainbowPressed = true;
+}
+
+blackButton.addEventListener("click",() => blackTrue());
+rainbowButton.addEventListener("click",() => rainbowTrue());
 let randomR,randomG,randomB;
 resetButton.textContent = "RESET GRID";
+blackButton.textContent = "Black toggle";
+rainbowButton.textContent = "Rainbow toggle";
 resetButton.setAttribute("id","resetButton");
+blackButton.setAttribute("id","blackButton");
+rainbowButton.setAttribute("id","rainbowButton");
+colorButtonContainers.setAttribute("id","colorButtonContainers");
 body.appendChild(resetButton);
+colorButtonContainers.appendChild(blackButton);
+colorButtonContainers.appendChild(rainbowButton);
+body.appendChild(colorButtonContainers);
 let sqPerSide = prompt("How many squares per side do you want the grid?"); //TO DO: ADD A FLOOR FUNCTION TO ROUND THIS TO AN INT OR WE ARE DOOMED not really but still it would be nice
 if(sqPerSide<1){
     alert("You have entered a number less than 1");
@@ -36,10 +60,23 @@ gridContainer.style.boxShadow = "0px 0px 18px -1px #590000";
 //number/800 = length for each grid
 //boom, consistent grid size
 function randomHex(){
+    if(rainbowPressed){
     let returnVal = "#" + Math.floor(Math.random()*16777215).toString(16);
     return returnVal;
+    }
+    else{
+        return "black";
+    }
 }
 
+
+// function drawing(eventA){
+//     if(blackPressed){
+//         gridArray[i].addEventListener("mouseover", (e) =>  eventA.target.style.backgroundColor = "black");
+//     }else{
+//         gridArray[i].addEventListener("mouseover", (e) =>  eventA.target.style.backgroundColor = randomHex());
+//     }
+// }
 
 //end 
 body.appendChild(gridContainer);
