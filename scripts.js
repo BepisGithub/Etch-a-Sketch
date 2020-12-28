@@ -3,18 +3,6 @@ const resetButton = document.createElement("button");
 resetButton.textContent = "RESET GRID";
 body.appendChild(resetButton);
 let sqPerSide = prompt("How many squares per side do you want the grid?"); //TO DO: ADD A FLOOR FUNCTION TO ROUND THIS TO AN INT OR WE ARE DOOMED not really but still it would be nice
-// switch (sqPerSide){
-//     case sqPerSide>100:
-//         alert("You have entered a number greater than 100");
-//         sqPerSide = 100;
-//         break;
-//     case sqPerSide<1:
-//         alert("You have entered a number less than 1");
-//         sqPerSide = 1;
-//         break;
-//     default:
-//         break;
-// }
 if(sqPerSide<1){
     alert("You have entered a number less than 1");
     sqPerSide = 1;
