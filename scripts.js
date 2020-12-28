@@ -1,5 +1,6 @@
 const body = document.querySelector("body");
 const resetButton = document.createElement("button");
+const gridDimensionVal = 800;
 resetButton.textContent = "RESET GRID";
 body.appendChild(resetButton);
 let sqPerSide = prompt("How many squares per side do you want the grid?"); //TO DO: ADD A FLOOR FUNCTION TO ROUND THIS TO AN INT OR WE ARE DOOMED not really but still it would be nice
@@ -18,8 +19,8 @@ const gridContainer = document.createElement("div");
 gridContainer.id = "gridContainer";
 
 
-gridContainer.style.width = `${50*sqPerSide}px`;
-gridContainer.style.height = `${50*sqPerSide}px`;
+gridContainer.style.width = `${gridDimensionVal}px`;
+gridContainer.style.height = `${gridDimensionVal}px`;
 // gridContainer.style.width = "800px"; //50px * 16
 // gridContainer.style.height = "800px"; //50px * 16
 
@@ -35,8 +36,8 @@ body.appendChild(gridContainer);
 for(i=0;i<totalGridNumber;i++){
     gridArray[i] = document.createElement("div");
     gridContainer.appendChild(gridArray[i]);
-    gridArray[i].style.height = "50px";
-    gridArray[i].style.width = "50px";
+    gridArray[i].style.height = `${gridDimensionVal/sqPerSide}px`;
+    gridArray[i].style.width = `${gridDimensionVal/sqPerSide}px`;
     gridArray[i].addEventListener("mouseover", (e) =>  e.target.style.backgroundColor = "green"); //new
     // gridArray[i].addEventListener("click", (e) => e.target.style.backgroundColor = "pink"); //new
 }
