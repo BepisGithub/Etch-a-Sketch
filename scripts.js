@@ -1,4 +1,7 @@
 const body = document.querySelector("body");
+const resetButton = document.createElement("button");
+resetButton.textContent = "RESET GRID";
+body.appendChild(resetButton);
 let gridArray = [];
 const totalGridNumber = 256;
 const gridContainer = document.createElement("div");
@@ -15,12 +18,9 @@ body.appendChild(gridContainer);
 for(i=0;i<256;i++){
     gridArray[i] = document.createElement("div");
     gridContainer.appendChild(gridArray[i]);
-    //temp
-    gridArray[i].style.border = "solid 1px black";
-    // end temp
     gridArray[i].style.height = "50px";
     gridArray[i].style.width = "50px";
-    gridArray[i].addEventListener("mouseover", (e) =>  e.target.style.backgroundColor = "grey"); //new
+    gridArray[i].addEventListener("mouseover", (e) =>  e.target.style.backgroundColor = "green"); //new
     // gridArray[i].addEventListener("click", (e) => e.target.style.backgroundColor = "pink"); //new
 }
 
@@ -35,3 +35,11 @@ for(i=0;i<256;i++){
 
 //use the id
 //gridArray[i].setAttribute("id",`container${i}`);
+
+function reset(){
+    for(i=0;i<gridArray.length;i++)
+    {
+        gridArray[i].style.backgroundColor = "white";
+    }
+}
+resetButton.addEventListener("click",() => reset() );
