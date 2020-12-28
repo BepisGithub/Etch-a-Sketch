@@ -124,7 +124,7 @@ function reset(){
 resetButton.addEventListener("click",() => reset() );
 
 const refreshP = document.createElement("p");
-refreshP.textContent = "Refresh the page to enter a new grid number";
+refreshP.textContent = "Refresh the page to change the number of squares in the grid";
 refreshP.style.position = "relative";
 refreshP.style.bottom = "50vh";
 body.appendChild(refreshP);
