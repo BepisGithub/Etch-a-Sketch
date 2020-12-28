@@ -1,6 +1,7 @@
 const body = document.querySelector("body");
 const resetButton = document.createElement("button");
 const gridDimensionVal = 800;
+let randomR,randomG,randomB;
 resetButton.textContent = "RESET GRID";
 resetButton.setAttribute("id","resetButton");
 body.appendChild(resetButton);
@@ -30,6 +31,10 @@ gridContainer.style.height = `${gridDimensionVal}px`;
 //take number of grids per side
 //number/800 = length for each grid
 //boom, consistent grid size
+function randomHex(){
+    let returnVal = "#" + Math.floor(Math.random()*16777215).toString(16);
+    return returnVal;
+}
 
 
 //end 
@@ -39,7 +44,21 @@ for(i=0;i<totalGridNumber;i++){
     gridContainer.appendChild(gridArray[i]);
     gridArray[i].style.height = `${gridDimensionVal/sqPerSide}px`;
     gridArray[i].style.width = `${gridDimensionVal/sqPerSide}px`;
-    gridArray[i].addEventListener("mouseover", (e) =>  e.target.style.backgroundColor = "green"); //new
+    //let random r,g,b
+    //random values between 0-255 for each,
+    //create a string where its rgb(r,g,b)
+    //enter the string in place of the orange
+    
+
+
+
+    
+
+
+
+
+
+    gridArray[i].addEventListener("mouseover", (e) =>  e.target.style.backgroundColor = randomHex()); //new
     // gridArray[i].addEventListener("click", (e) => e.target.style.backgroundColor = "pink"); //new
 }
 
