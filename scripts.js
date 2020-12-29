@@ -4,7 +4,7 @@ const resetButton = document.createElement("button");
 const blackButton = document.createElement("button");
 const rainbowButton = document.createElement("button");
 const colorButtonContainers = document.createElement("div");
-const gridDimensionVal = 800; //setting the number val to set the grid and divide by for the size of the squares
+let gridDimensionVal = 800; //setting the number val to set the grid and divide by for the size of the squares
 let blackPressed = false, rainbowPressed = false;
 
 function blackTrue(){ //these functions set the values to use for deciding the colour of the cursor hover effect
@@ -46,7 +46,10 @@ if(sqPerSide<1){
 }else{
     //do nothing
 }
-
+gridDimensionVal = (gridDimensionVal/sqPerSide)*sqPerSide; //This ensures that when a number e.g. 11 is given, the result may be too long of a decimal to
+//use as the value when doing gridArray[i].style.height = `${(gridDimensionVal/sqPerSide)}px`;
+//the decimal wiill be truncated so otherwise the grid would end up having weird whitespaces. THis line fixes that by dynamically adjusting the grid
+//slightly so that all the square divs inside will fit properly with no whitespace
 
 
 //creating an array to store all the grids
@@ -76,7 +79,7 @@ for(i=0;i<totalGridNumber;i++){ //creating the number of divs needed
     gridArray[i] = document.createElement("div"); //creation
     gridContainer.appendChild(gridArray[i]); //appending it
     //setting dimensions
-    gridArray[i].style.height = `${gridDimensionVal/sqPerSide}px`;
+    gridArray[i].style.height = `${(gridDimensionVal/sqPerSide)}px`;
     gridArray[i].style.width = `${gridDimensionVal/sqPerSide}px`;
     gridArray[i].addEventListener("mouseover", (e) =>  e.target.style.backgroundColor = randomHex()); //when each one is hovered over, the event target (the div)'s background 
     //color is set by using the randomHex function to get a colour depending on which colour button has been pressed
