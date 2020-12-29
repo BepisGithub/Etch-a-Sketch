@@ -15,7 +15,7 @@ function rainbowTrue(){
     blackPressed = false;
     rainbowPressed = true;
 }
-
+//new
 //more elements being created and added
 blackButton.addEventListener("click",() => blackTrue());
 rainbowButton.addEventListener("click",() => rainbowTrue());
