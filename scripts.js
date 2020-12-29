@@ -45,6 +45,7 @@ if(sqPerSide<1){
     sqPerSide = 100;
 }else{
     //do nothing
+    //nothing
 }
 gridDimensionVal = Math.floor((gridDimensionVal/sqPerSide))*sqPerSide;
 console.log(gridDimensionVal); //This ensures that when a number e.g. 11 is given, the result may be too long of a decimal to
