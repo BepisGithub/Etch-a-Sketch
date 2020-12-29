@@ -74,7 +74,13 @@ function randomHex(){ //function to decide the colour. if the rainbow button is 
     }
 }
 
-
+//added a p to append indicating what the user should do if they want a new number of squares in the grid
+const refreshP = document.createElement("p");
+refreshP.textContent = "Refresh the page to change the number of squares in the grid";
+//moving it up to make it more visible
+refreshP.style.position = "relative";
+refreshP.style.top = "50vh";
+body.appendChild(refreshP);
 body.appendChild(gridContainer);
 for(i=0;i<totalGridNumber;i++){ //creating the number of divs needed
     gridArray[i] = document.createElement("div"); //creation
@@ -96,10 +102,3 @@ function reset(){ //reset function for the reset button
 }
 resetButton.addEventListener("click",() => reset() ); //event listener for the reset button
 
-//added a p to append indicating what the user should do if they want a new number of squares in the grid
-const refreshP = document.createElement("p");
-refreshP.textContent = "Refresh the page to change the number of squares in the grid";
-//moving it up to make it more visible
-refreshP.style.position = "relative";
-refreshP.style.top = "50vh";
-body.appendChild(refreshP);
