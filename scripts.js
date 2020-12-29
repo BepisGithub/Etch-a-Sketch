@@ -1,15 +1,13 @@
-
-//button toggle for colour
-
+//creating elements to add
 const body = document.querySelector("body");
 const resetButton = document.createElement("button");
 const blackButton = document.createElement("button");
 const rainbowButton = document.createElement("button");
 const colorButtonContainers = document.createElement("div");
-const gridDimensionVal = 800;
+const gridDimensionVal = 800; //setting the number val to set the grid and divide by for the size of the squares
 let blackPressed = false, rainbowPressed = false;
 
-function blackTrue(){
+function blackTrue(){ //these functions set the values to use for deciding the colour of the cursor hover effect
     blackPressed = true;
     rainbowPressed = false;
 }
@@ -18,25 +16,27 @@ function rainbowTrue(){
     rainbowPressed = true;
 }
 
+//more elements being created and added
 blackButton.addEventListener("click",() => blackTrue());
 rainbowButton.addEventListener("click",() => rainbowTrue());
 let randomR,randomG,randomB;
 resetButton.textContent = "RESET GRID";
-blackButton.textContent = "Black toggle";
-rainbowButton.textContent = "Rainbow toggle";
+blackButton.textContent = "Black colour";
+rainbowButton.textContent = "Rainbow colour";
 resetButton.setAttribute("id","resetButton");
 blackButton.setAttribute("id","blackButton");
 rainbowButton.setAttribute("id","rainbowButton");
 colorButtonContainers.setAttribute("id","colorButtonContainers");
+//appending them to the body
 body.appendChild(resetButton);
 colorButtonContainers.appendChild(blackButton);
 colorButtonContainers.appendChild(rainbowButton);
 body.appendChild(colorButtonContainers);
-let sqPerSide;
-do{
-sqPerSide = prompt("How many squares per side do you want the grid?"); //TO DO: ADD A FLOOR FUNCTION TO ROUND THIS TO AN INT OR WE ARE DOOMED not really but still it would be nice
-}while(isNaN(sqPerSide))
 
+let sqPerSide; // input value stored here
+do{ //runs the loop at least once
+sqPerSide = prompt("How many squares per side do you want the grid?"); 
+}while(isNaN(sqPerSide)) //make sure they have entered a valid input
 if(sqPerSide<1){
     alert("You have entered a number less than 1");
     sqPerSide = 1;
@@ -44,92 +44,58 @@ if(sqPerSide<1){
     alert("You have entered a number greater than 100");
     sqPerSide = 100;
 }else{
-    //
+    //do nothing
 }
+
+
+
+//creating an array to store all the grids
 let gridArray = [];
-const totalGridNumber = sqPerSide**2;
-const gridContainer = document.createElement("div");
+const totalGridNumber = sqPerSide**2; //deciding the number of grids in total
+const gridContainer = document.createElement("div"); //container for the divs
 gridContainer.id = "gridContainer";
 
 
-gridContainer.style.width = `${gridDimensionVal}px`;
+gridContainer.style.width = `${gridDimensionVal}px`; //800px, using the value declared earlier
 gridContainer.style.height = `${gridDimensionVal}px`;
-// gridContainer.style.width = "800px"; //50px * 16
-// gridContainer.style.height = "800px"; //50px * 16
-gridContainer.style.boxShadow = "0px 0px 18px 0px #590000";
-//hello
+gridContainer.style.boxShadow = "0px 0px 18px 0px #590000"; //red box shadow
 
-//alternatively if i wanted to keep the grid size consistent i could do
-//set a grid dimension e.g. 800x800
-//take number of grids per side
-//number/800 = length for each grid
-//boom, consistent grid size
-function randomHex(){
+function randomHex(){ //function to decide the colour. if the rainbow button is pressed then 
     if(rainbowPressed){
-    let returnVal = "#" + Math.floor(Math.random()*16777215).toString(16);
+    let returnVal = "#" + Math.floor(Math.random()*16777215).toString(16); //randomly generate a colour, add a # to it to make a random hex number
     return returnVal;
     }
     else{
-        return "black";
+        return "black"; //otherwise return the colour black
     }
 }
 
 
-// function drawing(eventA){
-//     if(blackPressed){
-//         gridArray[i].addEventListener("mouseover", (e) =>  eventA.target.style.backgroundColor = "black");
-//     }else{
-//         gridArray[i].addEventListener("mouseover", (e) =>  eventA.target.style.backgroundColor = randomHex());
-//     }
-// }
-
-//end 
 body.appendChild(gridContainer);
-for(i=0;i<totalGridNumber;i++){
-    gridArray[i] = document.createElement("div");
-    gridContainer.appendChild(gridArray[i]);
+for(i=0;i<totalGridNumber;i++){ //creating the number of divs needed
+    gridArray[i] = document.createElement("div"); //creation
+    gridContainer.appendChild(gridArray[i]); //appending it
+    //setting dimensions
     gridArray[i].style.height = `${gridDimensionVal/sqPerSide}px`;
     gridArray[i].style.width = `${gridDimensionVal/sqPerSide}px`;
-    //let random r,g,b
-    //random values between 0-255 for each,
-    //create a string where its rgb(r,g,b)
-    //enter the string in place of the orange
-    
-
-
-
-    
-
-
-
-
-
-    gridArray[i].addEventListener("mouseover", (e) =>  e.target.style.backgroundColor = randomHex()); //new
-    // gridArray[i].addEventListener("click", (e) => e.target.style.backgroundColor = "pink"); //new
+    gridArray[i].addEventListener("mouseover", (e) =>  e.target.style.backgroundColor = randomHex()); //when each one is hovered over, the event target (the div)'s background 
+    //color is set by using the randomHex function to get a colour depending on which colour button has been pressed
 }
 
 
-//// gridArray[1].addEventListener("click", gridArray[i].setAttribute("style", "background-color: red")
 
-
-//I FOUND THE ISSUE. THE EVENT LISTENER IS SET UP ALWAYS BUT IN THE FUNCTION THAT IT CALLS IT STILL USES GRIDARRAY[I] BUT THE I GETS DESTROYED AS SOON AS WE LEAVE THE FOR LOOP
-//THIS MEANS WE NEED TO FIND SOME WAY TO SET THE EVENT LISTENER TO call a function that adjusts BG colour without the use of I... lol
-
-//myb set the id of each div to something done
-
-//use the id
-//gridArray[i].setAttribute("id",`container${i}`);
-
-function reset(){
-    for(i=0;i<gridArray.length;i++)
+function reset(){ //reset function for the reset button
+    for(i=0;i<gridArray.length;i++) //iterates through each grid and sets the background colour to white
     {
         gridArray[i].style.backgroundColor = "white";
     }
 }
-resetButton.addEventListener("click",() => reset() );
+resetButton.addEventListener("click",() => reset() ); //event listener for the reset button
 
+//added a p to append indicating what the user should do if they want a new number of squares in the grid
 const refreshP = document.createElement("p");
 refreshP.textContent = "Refresh the page to change the number of squares in the grid";
+//moving it up to make it more visible
 refreshP.style.position = "relative";
 refreshP.style.bottom = "50vh";
 body.appendChild(refreshP);
