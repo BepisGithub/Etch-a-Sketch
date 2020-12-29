@@ -97,5 +97,5 @@ const refreshP = document.createElement("p");
 refreshP.textContent = "Refresh the page to change the number of squares in the grid";
 //moving it up to make it more visible
 refreshP.style.position = "relative";
-refreshP.style.bottom = "50vh";
+refreshP.style.top = "50vh";
 body.appendChild(refreshP);
