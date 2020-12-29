@@ -46,7 +46,8 @@ if(sqPerSide<1){
 }else{
     //do nothing
 }
-gridDimensionVal = (gridDimensionVal/sqPerSide)*sqPerSide; //This ensures that when a number e.g. 11 is given, the result may be too long of a decimal to
+gridDimensionVal = Math.floor((gridDimensionVal/sqPerSide))*sqPerSide;
+console.log(gridDimensionVal); //This ensures that when a number e.g. 11 is given, the result may be too long of a decimal to
 //use as the value when doing gridArray[i].style.height = `${(gridDimensionVal/sqPerSide)}px`;
 //the decimal wiill be truncated so otherwise the grid would end up having weird whitespaces. THis line fixes that by dynamically adjusting the grid
 //slightly so that all the square divs inside will fit properly with no whitespace
